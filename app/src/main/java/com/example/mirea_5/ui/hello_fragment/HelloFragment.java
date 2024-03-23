@@ -1,5 +1,6 @@
 package com.example.mirea_5.ui.hello_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mirea_5.MyService;
 import com.example.mirea_5.NotificationManager;
 import com.example.mirea_5.R;
 import com.example.mirea_5.databinding.FragmentHelloBinding;
@@ -37,6 +39,11 @@ public class HelloFragment extends Fragment {
         );
 
         binding.notificationButton.setOnClickListener(v -> showNotification());
+
+        binding.startServiceButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), MyService.class);
+            requireActivity().startService(intent);
+        });
 
         return binding.getRoot();
     }
