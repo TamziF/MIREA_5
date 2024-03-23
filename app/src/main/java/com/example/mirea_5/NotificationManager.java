@@ -15,7 +15,7 @@ public class NotificationManager {
     private final static String CHANNEL_ID = "channel_id";
     private final int notificationId = 1;
 
-    NotificationChannel importantChannel = new NotificationChannel("Важные уведомления!", "Важные уведомления!", android.app.NotificationManager.IMPORTANCE_DEFAULT);
+    NotificationChannel importantChannel = new NotificationChannel("channel_id!", "Важные уведомления!", android.app.NotificationManager.IMPORTANCE_DEFAULT);
 
     NotificationCompat.Builder builder;
 
@@ -24,6 +24,7 @@ public class NotificationManager {
     public NotificationManager(Context context) {
         builder = new NotificationCompat.Builder(context, importantChannel.getId());
         notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.createNotificationChannel(importantChannel);
     }
 
     public void sendNotification(String title, String text, int drawable, Context context) {

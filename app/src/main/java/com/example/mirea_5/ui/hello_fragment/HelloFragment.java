@@ -36,10 +36,7 @@ public class HelloFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_helloFragment_to_notes)
         );
 
-        binding.notificationButton.setOnClickListener(v -> {
-            requireActivity().requestPermissions(new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1);
-            showNotification();
-        });
+        binding.notificationButton.setOnClickListener(v -> showNotification());
 
         return binding.getRoot();
     }
