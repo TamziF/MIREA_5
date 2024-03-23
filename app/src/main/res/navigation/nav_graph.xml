@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/helloFragment">
+
+    <fragment
+        android:id="@+id/helloFragment"
+        android:name="com.example.mirea_5.ui.hello_fragment.HelloFragment"
+        android:label="fragment_hello"
+        tools:layout="@layout/fragment_hello" >
+        <action
+            android:id="@+id/action_helloFragment_to_notes"
+            app:destination="@id/notes" />
+    </fragment>
+    <fragment
+        android:id="@+id/notes"
+        android:name="com.example.mirea_5.ui.notes_fragment.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" >
+        <action
+            android:id="@+id/action_notes_to_notesSettings"
+            app:destination="@id/notesSettings" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesSettings"
+        android:name="com.example.mirea_5.ui.notes_settings_fragment.NotesSettings"
+        android:label="fragment_notes_settings"
+        tools:layout="@layout/fragment_notes_settings" >
+        <action
+            android:id="@+id/action_notesSettings_to_notes"
+            app:destination="@id/notes" />
+    </fragment>
+</navigation>
