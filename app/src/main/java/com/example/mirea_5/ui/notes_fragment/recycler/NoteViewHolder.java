@@ -26,6 +26,7 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
 
         binding.card.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
+            bundle.putString("id", item.id);
             bundle.putString("title", item.title);
             bundle.putString("content", item.content);
             Navigation.findNavController(v).navigate(R.id.action_notes_to_notesSettings, bundle);

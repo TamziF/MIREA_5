@@ -1,4 +1,4 @@
-package com.example.mirea_5;
+package com.example.mirea_5.ui.hello_fragment;
 
 import android.Manifest;
 import android.app.NotificationChannel;

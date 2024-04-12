@@ -3,77 +3,50 @@ package com.example.mirea_5.ui.notes_fragment;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.mirea_5.data.model.Note;
 import com.example.mirea_5.databinding.FragmentNotesBinding;
+import com.example.mirea_5.ioc.ApplicationComponent;
 import com.example.mirea_5.ui.notes_fragment.recycler.DiffUtilCallBack;
 import com.example.mirea_5.ui.notes_fragment.recycler.NotesAdapter;
+import com.example.mirea_5.App;
+import com.example.mirea_5.ui.stateholders.NotesViewModel;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class NotesFragment extends Fragment {
 
     private FragmentNotesBinding binding;
 
-    private List<Note> notes = new ArrayList<Note>();
+    private final ApplicationComponent applicationComponent = App.getApplicationComponent();
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        createExampleNotesList();
-    }
+    private NotesViewModel notesViewModel;
+    private final NotesAdapter notesAdapter = new NotesAdapter(new DiffUtilCallBack());
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentNotesBinding.inflate(inflater, container, false);
 
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        NotesAdapter adapter = new NotesAdapter(new DiffUtilCallBack());
-        binding.recyclerView.setAdapter(adapter);
-        adapter.submitList(notes);
+        notesViewModel = new ViewModelProvider(this, applicationComponent.viewModelFactory).get(NotesViewModel.class);
+
+        observeList();
+        bindRecycler();
 
         return binding.getRoot();
     }
 
-    private void createExampleNotesList() {
-        Note note1 = new Note(
-                "Sport",
-                "Now i know, that everyday morning work out won't become a problem, but will help in my hard gym work outs"
-        );
+    private void observeList() {
+        notesViewModel.notes.observe(getViewLifecycleOwner(), notesAdapter::submitList);
+    }
 
-        Note note2 = new Note(
-                "Clean space",
-                "Little description of your things. For example, i shall clean the space around me and in my things, to become productive and rich"
-        );
-
-        Note note3 = new Note(
-                "Clean space",
-                "Little description of your things. For example, i shall clean the space around me and in my things, to become productive and rich"
-        );
-
-        Note note4 = new Note(
-                "Clean space",
-                "Little description of your things. For example, i shall clean the space around me and in my things, to become productive and rich"
-        );
-
-        Note note5 = new Note(
-                "Clean space",
-                "Little description of your things. For example, i shall clean the space around me and in my things, to become productive and rich"
-        );
-
-        notes.add(note1);
-        notes.add(note2);
-        notes.add(note3);
-        notes.add(note4);
-        notes.add(note5);
+    private void bindRecycler() {
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerView.setAdapter(notesAdapter);
     }
 }

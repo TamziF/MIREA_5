@@ -18,7 +18,7 @@ public class NotesAdapter extends ListAdapter<Note, NoteViewHolder> {
     @NonNull
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        NoteItemBinding binding = NoteItemBinding.inflate(LayoutInflater.from(parent.getContext()));
+        NoteItemBinding binding = NoteItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new NoteViewHolder(binding);
     }
 

@@ -1,4 +1,4 @@
-package com.example.mirea_5;
+package com.example.mirea_5.services;
 
 import android.app.Service;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.example.mirea_5.MainActivity;
 import com.example.mirea_5.databinding.ServiceWindowBinding;
 
 public class MyService extends Service {

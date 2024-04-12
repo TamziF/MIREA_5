@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_helloFragment_to_notes"
             app:destination="@id/notes" />
+        <action
+            android:id="@+id/action_helloFragment_to_boringWindowFragment"
+            app:destination="@id/boringWindowFragment" />
     </fragment>
     <fragment
         android:id="@+id/notes"
@@ -25,11 +28,33 @@
     </fragment>
     <fragment
         android:id="@+id/notesSettings"
-        android:name="com.example.mirea_5.ui.notes_settings_fragment.NotesSettings"
+        android:name="com.example.mirea_5.ui.notes_settings_fragment.NotesSettingsFragment"
         android:label="fragment_notes_settings"
         tools:layout="@layout/fragment_notes_settings" >
         <action
             android:id="@+id/action_notesSettings_to_notes"
             app:destination="@id/notes" />
     </fragment>
+    <fragment
+        android:id="@+id/boringWindowFragment"
+        android:name="com.example.mirea_5.ui.boring_window_fragment.BoringWindowFragment"
+        android:label="fragment_boring_window"
+        tools:layout="@layout/fragment_boring_window" >
+        <action
+            android:id="@+id/action_boringWindowFragment_to_listViewFragment"
+            app:destination="@id/listViewFragment" />
+        <action
+            android:id="@+id/action_boringWindowFragment_to_recyclerViewFragment"
+            app:destination="@id/recyclerViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listViewFragment"
+        android:name="com.example.mirea_5.ui.mirea4.list_view_fragment.ListViewFragment"
+        android:label="fragment_list_view"
+        tools:layout="@layout/fragment_list_view" />
+    <fragment
+        android:id="@+id/recyclerViewFragment"
+        android:name="com.example.mirea_5.ui.mirea4.recycler_view_fragment.RecyclerViewFragment"
+        android:label="fragment_recycler_view"
+        tools:layout="@layout/fragment_recycler_view" />
 </navigation>
