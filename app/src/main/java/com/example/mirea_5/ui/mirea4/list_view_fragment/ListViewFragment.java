@@ -34,7 +34,7 @@ public class ListViewFragment extends Fragment {
 
     private ListViewAdapter adapter;
 
-    private List<ListItem> list = Collections.emptyList();
+    private ArrayList<ListItem> list = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

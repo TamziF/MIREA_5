@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -11,12 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mirea_5.data.model.Note;
 import com.example.mirea_5.databinding.FragmentNotesBinding;
 import com.example.mirea_5.ioc.ApplicationComponent;
 import com.example.mirea_5.ui.notes_fragment.recycler.DiffUtilCallBack;
 import com.example.mirea_5.ui.notes_fragment.recycler.NotesAdapter;
 import com.example.mirea_5.App;
 import com.example.mirea_5.ui.stateholders.NotesViewModel;
+
+import java.util.List;
 
 
 public class NotesFragment extends Fragment {
